@@ -18,6 +18,8 @@ The main goal of this dashboard is to help businesses understand their web traff
 - Sessions and Bounces Analysis by Month and Device
 - Top Unique Pageviews and Country Insights
 
+![My Image](Tableau-Web-Marketing-Performance-Dashboard_Project/tableau_public_dashboard_image.png)
+
 ## How to Use the Dashboard
 
 1. **Explore the Dashboard Online**:
@@ -28,7 +30,7 @@ The main goal of this dashboard is to help businesses understand their web traff
 2. **Clone the Repository**:
 
     ```bash
-    git clone https://github.com/your-username/web-marketing-performance-dashboard.git
+    git clone https://github.com/D-Danos/Tableau-Web-Marketing-Performance-Dashboard.git
     ```
 
 ## Steps
@@ -37,7 +39,7 @@ The main goal of this dashboard is to help businesses understand their web traff
    - Imported the provided `.csv` file into Tableau.
 
 2. **Data Preparation**:
-   - Ensured data consistency and validity with no errors or empty fields.
+   - Data is consistent and valid, with no errors or empty fields.
 
 3. **Creating Filters and Calculations**:
    - Created filters for Channel Grouping, Device Category, and Date Range to allow dynamic data exploration.
