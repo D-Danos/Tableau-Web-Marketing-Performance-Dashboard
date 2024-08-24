@@ -18,7 +18,7 @@ The main goal of this dashboard is to help businesses understand their web traff
 - Sessions and Bounces Analysis by Month and Device
 - Top Unique Pageviews and Country Insights
 
-![My Image](Tableau-Web-Marketing-Performance-Dashboard_Project/tableau_public_dashboard_image.png)
+![Web Marketing Performance Dashboard](tableau_public_dashboard_image.png)
 
 ## How to Use the Dashboard
 
