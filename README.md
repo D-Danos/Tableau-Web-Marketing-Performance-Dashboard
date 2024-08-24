@@ -4,7 +4,9 @@
 
 ## Overview
 
-This repository contains the **Tableau Web Marketing Performance Dashboard**. The dashboard is designed to provide a comprehensive overview of a website's marketing performance, showcasing key metrics and visualizations to help analyze traffic sources, user behavior, and engagement.
+You can see the dashboard directly here: [Tableau Public link](https://public.tableau.com/app/profile/danos.dimitris/viz/WebMarketingDashboard_17243592790950/Dashboard?publish=yes). This repository contains the data for the dashboard. 
+
+The dashboard is designed to provide a comprehensive overview of a website's marketing performance, showcasing key metrics and visualizations to help analyze traffic sources, user behavior, and engagement.
 
 ### Goal
 
@@ -41,25 +43,57 @@ The main goal of this dashboard is to help businesses understand their web traff
    - Created filters for Channel Grouping, Device Category, and Date Range to allow dynamic data exploration.
    - Calculated key metrics like Total Sessions, Total Exits, Average Page Load Time, Average Time on Page, and Total Bounces.
 
-4. **Measures Used**:
-   - Used the following measures:
+4. **Calculated Fields for Filters**:
 
+    **Date Filter**  
+    - **Role:** Discrete Dimension  
+    - **Type:** Calculated Field  
+    - **Contains NULL:** No  
+    - **Status:** Valid  
+
+    **Formula**:
     ```Tableau
-    Total Sessions = SUM([Sessions])
-    Total Exits = SUM([Exits])
-    Average Page Load Time = AVG([Page Load Time (s)])
-    Average Time on Page = AVG([Time on Page (s)])
-    Total Bounces = SUM([Bounces])
-    Unique Pageviews = COUNTD([Pageviews])
+    CASE [Parameters].[Date Filter]
+        WHEN 'All Time' THEN [Date] >= {MIN([Date])} AND [Date] <= {MAX([Date])}
+        WHEN 'Yesterday' THEN [Date] = DATEADD('day', -1, {MAX([Date])})
+        WHEN 'This Week' THEN DATE(DATETRUNC('week', [Date], 'Monday')) = DATE(DATETRUNC('week', {MAX([Date])}, 'Monday'))
+        WHEN 'Last Week' THEN DATE(DATETRUNC('week', [Date], 'Monday')) = DATEADD('week', -1, DATE(DATETRUNC('week', {MAX([Date])}, 'Monday')))
+        WHEN 'This Month' THEN DATE(DATETRUNC('month', [Date])) = DATE(DATETRUNC('month', {MAX([Date])}))
+        WHEN 'Last Month' THEN DATE(DATETRUNC('month', [Date])) = DATEADD('month', -1, DATE(DATETRUNC('month', {MAX([Date])})))
+        WHEN 'This Quarter' THEN DATE(DATETRUNC('quarter', [Date])) = DATE(DATETRUNC('quarter', {MAX([Date])}))
+        WHEN 'Last Quarter' THEN DATE(DATETRUNC('quarter', [Date])) = DATEADD('quarter', -1, DATE(DATETRUNC('quarter', {MAX([Date])})))
+        WHEN 'This Year' THEN DATE(DATETRUNC('year', [Date])) = DATE(DATETRUNC('year', {MAX([Date])}))
+        WHEN 'Last 30 Days' THEN [Date] >= DATEADD('day', -30, {MAX([Date])}) AND [Date] <= DATEADD('day', -1, {MAX([Date])})
+        WHEN 'Last 60 Days' THEN [Date] >= DATEADD('day', -60, {MAX([Date])}) AND [Date] <= DATEADD('day', -1, {MAX([Date])})
+        WHEN 'Last 90 Days' THEN [Date] >= DATEADD('day', -90, {MAX([Date])}) AND [Date] <= DATEADD('day', -1, {MAX([Date])})
+        WHEN 'Custom Date Range' THEN [Date] >= [Start Date] AND [Date] <= [End Date]
+    END
     ```
+    **Domain (2 members):**  
+    - False  
+    - True  
 
-5. **Creating the Dashboard**:
+
+    **Show Custom Date Filter**  
+    - **Role:** Discrete Dimension  
+    - **Type:** Calculated Field  
+    - **Contains NULL:** No  
+    - **Status:** Valid  
+
+    **Formula**:
+    ```Tableau
+    [Parameters].[Date Filter] = 'Custom Date Range'
+    ```
+    **Domain (1 member):**  
+    - True  
+
+6. **Creating the Dashboard**:
    - Designed the dashboard layout to include key performance indicators (KPIs), bar charts for monthly sessions and bounces, and a geographical breakdown of top countries by unique pageviews.
    - Utilized color coding and tooltips to enhance user experience and interactivity.
 
 ## Credits
 
-Credits to [Data Tutorials](https://www.youtube.com/@datatutorials1) for providing the web traffic data and inspiration via their tutorial.
+Credits to [Abhishek Agarrwal](https://www.youtube.com/@AbhishekAgarrwal) for providing the web traffic data and inspiration via their tutorial. This project is an extension of this tutorial applying filters and Calculated fields.
 
 ## Contact
 
