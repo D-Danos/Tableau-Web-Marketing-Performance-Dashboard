@@ -95,7 +95,7 @@ The main goal of this dashboard is to help businesses understand their web traff
 
 ## Credits
 
-Credits to [Abhishek Agarrwal](https://www.youtube.com/@AbhishekAgarrwal) for providing the web traffic data and inspiration via their tutorial. This project is an extension of this tutorial applying filters and Calculated fields.
+Credits to [Abhishek Agarrwal](https://www.youtube.com/@AbhishekAgarrwal) for providing the web traffic data and inspiration via their tutorial. This project started as one of his tutorials, then extended it by applying filters and Calculated fields.
 
 ## Contact
 
